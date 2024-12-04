@@ -21,7 +21,18 @@ Este projeto é uma API de dicionário que permite consultar palavras, gerenciar
     - [POST] `http://localhost:8080/entries/en/fire/favorite`
       **Resposta esperada:** Mensagem de sucesso ao favoritar a palavra juntamente com json com as informações gravadas.
 
-    ## Como Instalar e Usar
+    ## Rodando o Projeto com Docker
+     - Certifique-se que possui o docker instalado na maquina
+     - Navegue até a raiz do projeto onde está o arquivo docker-compose.yml e rode o comando: docker-compose up --build
+
+     - Acesse o frontend:
+       - A aplicação frontend estará disponível em http://localhost:5173.
+     - Acesse a API:
+       - O backend estará disponível em http://localhost:8080.
+     - Banco de Dados:
+       - O MongoDb estará rodando em http://localhost:27017.
+
+    ## Como Instalar e Usar sem  o Docker
     ### Requisitos
     - **Node.js**: versão 20.16.0 ou superior
     - **MongoDB Atlas**: Configurado como banco de dados.
