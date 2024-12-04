@@ -72,7 +72,7 @@ export const register = async(req: express.Request, res: express.Response) => {
 
     // Atualizar o documento do usuário com o token
     newUser.authentication.sessionToken = sessionToken;
-    await newUser.save(); // Salvar o documento atualizado
+    await newUser.save();
 
     // Configurar o cookie de autenticação
     res.cookie('DICTIONARY-AUTH', sessionToken, { 

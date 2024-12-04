@@ -5,12 +5,16 @@ import {
     getUserById, 
     type UserModel
   } from '../db/users';
-import WordCache from '../db/wordsCache'; // Modelo para cache (definido abaixo)
+import WordCache from '../db/wordsCache'; 
 import axios from 'axios';
 
 interface AuthenticatedRequest extends Request {
     identity?: typeof UserModel.prototype;
 }
+
+const escapeRegex = (string: string) => {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
 
 export const getWords = async (req: Request, res: Response) => {
     try {
@@ -18,8 +22,10 @@ export const getWords = async (req: Request, res: Response) => {
         const limit = parseInt(req.query.limit as string, 10) || 10; // Número de itens por página
         const page = parseInt(req.query.page as string, 10) || 1; // Página atual
 
+        const sanitizedSearch = escapeRegex(search);
+
         // Filtro baseado na busca
-        const query = search
+        const query = sanitizedSearch
             ? { term: { $regex: new RegExp(`^${search}`, 'i') } }
             : {};
 

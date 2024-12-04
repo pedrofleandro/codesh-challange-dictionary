@@ -4,5 +4,5 @@ import { isAuthenticated } from '../middlewares';
 
 export default (router: express.Router) => {
   router.get('/entries/en', getWords);
-  router.get('/entries/en/:word', isAuthenticated, getWordDetails);
+  router.get("/entries/en/:word", isAuthenticated, getWordDetails);
 };
